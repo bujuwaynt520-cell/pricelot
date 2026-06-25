@@ -1,0 +1,6 @@
+{
+  "name": "PriceLot",
+  "description": "V1 PriceLot financial platform - Compare brokers, explore trading strategies, browse the academy, look up terms in the glossary, and find the best trading resources.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
