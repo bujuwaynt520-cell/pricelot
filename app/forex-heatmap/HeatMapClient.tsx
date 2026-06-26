@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useMemo, useState, useEffect } from "react";
-import { CURRENCIES, getHeatmapMatrix, getStrongestCurrency, getWeakestCurrency, getDailyMovers, HeatmapResponse } from "@/app/lib/services/forexHeatmap";
+import { CURRENCIES, buildHeatmapMatrix, getStrongestCurrency, getWeakestCurrency, getDailyMovers, HeatmapResponse } from "@/app/lib/services/forexHeatmap";
 import { ArrowUp, ArrowDown } from "lucide-react";
 
 function colorForChange(p: number) {
@@ -14,7 +14,7 @@ function colorForChange(p: number) {
 }
 
 export default function HeatMapClient() {
-  const [matrixData, setMatrixData] = useState<HeatmapResponse>(() => getHeatmapMatrix());
+  const [matrixData, setMatrixData] = useState<HeatmapResponse>(() => buildHeatmapMatrix());
   const [now, setNow] = useState(new Date());
 
   useEffect(() => {

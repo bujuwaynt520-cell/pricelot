@@ -120,7 +120,7 @@ export default async function GlossaryCategoryPage({ params }: PageProps) {
       {/* A-Z Index */}
       <div className="space-y-4">
         <h2 className="text-lg font-semibold text-slate-900">Browse by Letter</h2>
-        <GlossaryAZIndex onLetterClick={() => {}} />
+        <GlossaryAZIndex />
       </div>
 
       {/* Terms List */}

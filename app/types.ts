@@ -248,6 +248,7 @@ export interface NewsArticle {
   tags: string[];
   featured: boolean;
   trending: boolean;
+  source?: string;
 }
 
 export interface CurrencyStrength {

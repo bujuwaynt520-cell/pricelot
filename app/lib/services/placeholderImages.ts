@@ -1,4 +1,4 @@
-import type { PageImage } from "../types";
+import type { PageImage } from "../../types";
 
 /**
  * Placeholder Image Generation Service

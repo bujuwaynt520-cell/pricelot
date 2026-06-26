@@ -1,5 +1,6 @@
 import { getRelatedContentForMarketAsset } from "@/app/lib/services/internalLinks";
 import type { InternalLinkItem } from "@/app/lib/services/internalLinks";
+import type { MarketAssetType } from "@/app/types";
 
 export type MarketAssetRelatedGroups = {
   article: InternalLinkItem[];
@@ -11,7 +12,7 @@ export type MarketAssetRelatedGroups = {
 
 export async function getMarketAssetRelatedGroups(
   assetSlug: string,
-  assetType: string,
+  assetType: MarketAssetType,
   limit = 8
 ): Promise<MarketAssetRelatedGroups> {
   const items = await getRelatedContentForMarketAsset(assetSlug, assetType, limit);

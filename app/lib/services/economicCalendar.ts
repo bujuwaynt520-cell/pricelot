@@ -17,4 +17,5 @@ export async function filterEconomicEvents(
   return page.events;
 }
 
-export { getEconomicEventBySlug, getEconomicCalendarPage, EconomicCalendarFilters };
+export { getEconomicEventBySlug, getEconomicCalendarPage };
+export type { EconomicCalendarFilters };

@@ -13,13 +13,14 @@ export function buildMarketAssetMetadata(
   quote: MarketQuote,
   canonicalUrl: string
 ): Metadata {
-  const hubImage = generateMarketAssetOpenGraphImage(quote.assetType);
+  const assetType = quote.assetType || "Forex";
+  const hubImage = generateMarketAssetOpenGraphImage(assetType);
 
   return buildPageMetadata({
-    title: `${quote.displayName} (${quote.symbol}) | ${quote.assetType} Market Profile`,
+    title: `${quote.displayName} (${quote.symbol}) | ${assetType} Market Profile`,
     description: `Live quote, key stats, and market resources for ${quote.displayName}.`,
     canonical: canonicalUrl,
-    keywords: [quote.symbol, quote.displayName, quote.assetType, "market profile", "trading ideas", "live quote"],
+    keywords: [quote.symbol, quote.displayName, assetType, "market profile", "trading ideas", "live quote"],
     type: "article",
     openGraphImage: hubImage,
     twitterImage: hubImage,
@@ -41,17 +42,18 @@ export function getMarketAssetBreadcrumbsJsonLd(pathname: string) {
 
 export function getMarketAssetFaqItems(quote: MarketQuote): MarketAssetFaqItem[] {
   const assetName = quote.displayName;
+  const assetType = quote.assetType || "Forex";
   return [
     {
       question: `What is ${assetName}?`,
-      answer: `${assetName} is a key ${quote.assetType.toLowerCase()} instrument tracked by traders for its liquidity, price action, and macro sensitivity.`,
+      answer: `${assetName} is a key ${assetType.toLowerCase()} instrument tracked by traders for its liquidity, price action, and macro sensitivity.`,
     },
     {
       question: `What drives ${assetName} price movements?`,
-      answer: `Price moves are driven by supply and demand shifts, macro data, policy decisions, and market sentiment for ${quote.assetType.toLowerCase()} instruments.`,
+      answer: `Price moves are driven by supply and demand shifts, macro data, policy decisions, and market sentiment for ${assetType.toLowerCase()} instruments.`,
     },
     {
-      question: `How should traders use this ${quote.assetType.toLowerCase()} profile?`,
+      question: `How should traders use this ${assetType.toLowerCase()} profile?`,
       answer: `Use the live quote, support and resistance levels, and curated resources to frame trade ideas and manage risk while monitoring broader market context.`,
     },
   ];

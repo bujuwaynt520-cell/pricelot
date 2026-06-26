@@ -56,6 +56,7 @@ export default async function MarketAssetProfilePage({ params }: PageProps) {
   } = profile;
   const changeClass = quote.changePercent >= 0 ? "text-emerald-400" : "text-rose-400";
   const changeSign = quote.changePercent >= 0 ? "+" : "";
+  const assetType = quote.assetType || params.category;
 
   return (
     <div className="min-h-screen bg-slate-950 text-white">
@@ -82,11 +83,11 @@ export default async function MarketAssetProfilePage({ params }: PageProps) {
       <main className="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:px-8">
         <div className="mb-10 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <div>
-            <Link
+              <Link
               href={categoryPath}
               className="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.3em] text-orange-300 transition hover:text-orange-200"
             >
-              <ArrowLeft className="w-4 h-4" /> Back to {quote.assetType} markets
+              <ArrowLeft className="w-4 h-4" /> Back to {assetType} markets
             </Link>
             <p className="mt-3 text-xs uppercase tracking-[0.35em] text-slate-500">Market profile</p>
             <h1 className="mt-4 text-4xl font-black tracking-tight text-white sm:text-5xl">
@@ -115,7 +116,7 @@ export default async function MarketAssetProfilePage({ params }: PageProps) {
                 </div>
               </div>
               <div className="rounded-2xl bg-slate-900/80 px-3 py-2 text-xs uppercase tracking-[0.3em] text-slate-300">
-                {quote.assetType}
+                {assetType}
               </div>
             </div>
           </div>
@@ -181,7 +182,7 @@ export default async function MarketAssetProfilePage({ params }: PageProps) {
                 <p className="font-semibold text-white">Why this asset matters</p>
               </div>
               <p className="mt-5 text-sm leading-6 text-slate-300">
-                {quote.displayName} is one of the primary {quote.assetType.toLowerCase()} instruments used by traders to gauge broader market sentiment and price dynamics.
+                {quote.displayName} is one of the primary {(quote.assetType || params.category).toLowerCase()} instruments used by traders to gauge broader market sentiment and price dynamics.
               </p>
             </div>
 
@@ -191,11 +192,11 @@ export default async function MarketAssetProfilePage({ params }: PageProps) {
                 <p className="font-semibold text-white">Trade-ready resources</p>
               </div>
               <p className="mt-5 text-sm leading-6 text-slate-300">
-                Explore related market commentary, strategies, and glossary entries for {quote.assetType} trading with the links below.
+                Explore related market commentary, strategies, and glossary entries for {assetType} trading with the links below.
               </p>
               <div className="mt-6 space-y-3">
                 <Link href={categoryPath} className="block rounded-2xl bg-slate-950/50 px-4 py-3 text-sm font-semibold text-white transition hover:bg-slate-900">
-                  Browse {quote.assetType} market dashboard
+                  Browse {assetType} market dashboard
                 </Link>
                 <Link href={`/markets`} className="block rounded-2xl border border-slate-800/80 px-4 py-3 text-sm font-semibold text-slate-200 transition hover:border-orange-400/40">
                   Return to Markets Hub
@@ -238,11 +239,11 @@ export default async function MarketAssetProfilePage({ params }: PageProps) {
           <section className="mt-12 rounded-3xl border border-slate-800/90 bg-slate-900/80 p-8">
             <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
               <div>
-                <p className="text-sm uppercase tracking-[0.35em] text-orange-300">More {quote.assetType} profiles</p>
+                <p className="text-sm uppercase tracking-[0.35em] text-orange-300">More {assetType} profiles</p>
                 <h2 className="mt-3 text-3xl font-bold text-white">Explore other assets in this category</h2>
               </div>
               <Link href={categoryPath} className="text-sm font-semibold text-orange-300 transition hover:text-orange-200">
-                Back to {quote.assetType} market overview
+                Back to {assetType} market overview
               </Link>
             </div>
 
@@ -253,12 +254,12 @@ export default async function MarketAssetProfilePage({ params }: PageProps) {
                 .map((item) => (
                   <Link
                     key={item.symbol}
-                    href={`/markets/${item.assetType.toLowerCase()}/${item.symbol.replace(/[^a-zA-Z0-9]/g, "").toLowerCase()}`}
+                    href={`/markets/${(item.assetType || params.category).toLowerCase()}/${item.symbol.replace(/[^a-zA-Z0-9]/g, "").toLowerCase()}`}
                     className="group rounded-3xl border border-slate-800/80 bg-slate-950/50 p-6 transition hover:border-orange-400/40 hover:bg-slate-900"
                   >
                     <div className="text-sm uppercase tracking-[0.3em] text-orange-300">{item.symbol}</div>
                     <h3 className="mt-3 text-xl font-bold text-white">{item.displayName}</h3>
-                    <p className="mt-3 text-sm text-slate-400">{item.assetType} profile</p>
+                    <p className="mt-3 text-sm text-slate-400">{(item.assetType || params.category)} profile</p>
                     <div className="mt-5 flex items-center justify-between gap-4">
                       <span className={`text-lg font-semibold ${item.changePercent >= 0 ? "text-emerald-400" : "text-rose-400"}`}>
                         {item.changePercent >= 0 ? "+" : ""}{item.changePercent.toFixed(2)}%

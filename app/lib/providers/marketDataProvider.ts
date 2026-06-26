@@ -312,7 +312,7 @@ export async function getMarketQuoteParams(): Promise<{ category: string; asset:
   const data = await getMarketData();
 
   const canonicalSlugs = data.quotes.map((quote) => ({
-    category: quote.assetType.toLowerCase(),
+    category: (quote.assetType || "Forex").toLowerCase(),
     asset: getMarketQuoteSlug(quote.symbol),
   }));
 
@@ -320,7 +320,7 @@ export async function getMarketQuoteParams(): Promise<{ category: string; asset:
     .filter(([alias]) => !canonicalSlugs.some((item) => item.asset === alias))
     .map(([alias, canonicalSlug]) => {
       const quote = data.quotes.find((quote) => getMarketQuoteSlug(quote.symbol) === canonicalSlug);
-      return quote ? { category: quote.assetType.toLowerCase(), asset: alias } : null;
+      return quote ? { category: (quote.assetType || "Forex").toLowerCase(), asset: alias } : null;
     })
     .filter(Boolean) as { category: string; asset: string }[];
 
@@ -332,7 +332,8 @@ export function parseMarketAssetType(assetSlug: string): MarketAssetType | undef
 }
 
 export function getMarketQuotePath(quote: MarketQuote): string {
-  return `/markets/${quote.assetType.toLowerCase()}/${normalizeMarketSymbol(quote.symbol)}`;
+  const assetType = quote.assetType || "Forex";
+  return `/markets/${assetType.toLowerCase()}/${normalizeMarketSymbol(quote.symbol)}`;
 }
 
 export async function getMarketQuotesByAssetSlug(assetSlug: string): Promise<MarketQuote[]> {

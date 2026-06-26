@@ -2,6 +2,8 @@ import { MARKET_DATA_PROVIDER, fetchProviderData } from "@/app/lib/services/data
 import { fetchLiveCurrencyStrength } from "@/app/lib/services/liveData";
 import type { CurrencyStrength } from "@/app/types";
 
+export type { CurrencyStrength };
+
 export interface CurrencyStrengthResponse {
   data: CurrencyStrength[];
   lastUpdated: string;

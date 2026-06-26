@@ -410,6 +410,14 @@ export async function searchContent(
   return sorted;
 }
 
+/**
+ * Get global search suggestions from the entire content index
+ * @param query - Search query string
+ * @param limit - Maximum number of suggestions to return (default: 8)
+ * @returns Array of suggestion strings derived from tags and title words across all content
+ * @remarks This is the GLOBAL search suggestions function for the main search page.
+ *          For glossary-specific suggestions with category context, use glossarySearch.getSearchSuggestions instead.
+ */
 export async function getSearchSuggestions(query: string, limit: number = 8): Promise<string[]> {
   const normalizedQuery = normalizeText(query);
   const index = await buildGlobalSearchIndex();

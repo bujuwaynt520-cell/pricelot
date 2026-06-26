@@ -16,8 +16,9 @@ import {
   getMarketAssetRelatedGroups,
   type MarketAssetRelatedGroups,
 } from "@/app/lib/services/assetRelationships";
+import type { InternalLinkItem } from "@/app/lib/services/internalLinks";
 import { getAssetHeroImage, getAssetChartImages, getAssetMediaLibrary } from "@/app/lib/services/assetMedia";
-import type { MarketQuote } from "@/app/types";
+import type { MarketQuote, MarketAssetType } from "@/app/types";
 
 type BreadcrumbLink = { label: string; url: string };
 
@@ -30,7 +31,7 @@ export interface MarketAssetProfileData {
   currentUrl: string;
   metadata: Awaited<ReturnType<typeof buildMarketAssetMetadata>>;
   relatedGroups: MarketAssetRelatedGroups;
-  relatedItems: Array<unknown>;
+  relatedItems: InternalLinkItem[];
   breadcrumbs: BreadcrumbLink[];
   breadcrumbsJsonLd: string;
   faqItems: ReturnType<typeof getMarketAssetFaqItems>;
@@ -49,11 +50,12 @@ export async function getMarketAssetProfile(
 
   const canonicalAssetSlug = getMarketQuoteSlug(quote.symbol);
   const profileUrl = `/markets/${params.category}/${params.asset}`;
-  const canonicalUrl = `https://pricelot.com/markets/${quote.assetType.toLowerCase()}/${canonicalAssetSlug}`;
+  const assetType = (quote.assetType || params.category) as MarketAssetType;
+  const canonicalUrl = `https://pricelot.com/markets/${assetType.toLowerCase()}/${canonicalAssetSlug}`;
   const currentUrl = `https://pricelot.com${profileUrl}`;
 
-  const relatedGroups = await getMarketAssetRelatedGroups(params.asset, quote.assetType, 8);
-  const categoryAssets = await getMarketQuotesByType(quote.assetType);
+  const relatedGroups = await getMarketAssetRelatedGroups(params.asset, assetType, 8);
+  const categoryAssets = await getMarketQuotesByType(assetType);
   const breadcrumbs = getMarketAssetBreadcrumbs(profileUrl);
   const breadcrumbsJsonLd = getMarketAssetBreadcrumbsJsonLd(profileUrl);
   const faqItems = getMarketAssetFaqItems(quote);

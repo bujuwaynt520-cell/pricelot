@@ -4,7 +4,7 @@ import {
   SAMPLE_LESSONS_EXTENDED,
   SAMPLE_STRATEGIES_EXTENDED,
 } from "../contentEngine";
-import { MarketAssetType } from "../types";
+import { MarketAssetType } from "../../types";
 import { getNewsArticles } from "./newsFeed";
 import { getCommoditiesHub } from "./commoditiesHub";
 import { getCryptoHub } from "./cryptoHub";

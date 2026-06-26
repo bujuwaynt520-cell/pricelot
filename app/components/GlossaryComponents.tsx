@@ -174,10 +174,10 @@ export function RelatedGlossaryTerms({
  */
 export function GlossaryAZIndex({
   currentLetter,
-  onLetterClick,
+  onLetterClick = () => {},
 }: {
   currentLetter?: string;
-  onLetterClick: (letter: string) => void;
+  onLetterClick?: (letter: string) => void;
 }) {
   const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
 
