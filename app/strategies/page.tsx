@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import StrategyLibrary from "../../src/components/StrategyLibrary";
+import StrategyLibrary from "@/app/components/StrategyLibrary";
 
 export const metadata: Metadata = {
   title: "Systematic Strategy Library | Backtested Price Action Blueprints | PriceLot",

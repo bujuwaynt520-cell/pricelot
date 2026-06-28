@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import BrokerReview from "../../../src/components/BrokerReview";
+import BrokerReview from "@/app/components/BrokerReview";
 import AdSlot from "../../components/ads/AdSlot";
 import AffiliateCard from "../../components/affiliate/AffiliateCard";
 import AffiliateDisclosure from "../../components/affiliate/AffiliateDisclosure";

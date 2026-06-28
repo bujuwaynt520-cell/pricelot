@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import Link from "next/link";
-import StrategyLibrary from "../../../src/components/StrategyLibrary";
+import StrategyLibrary from "@/app/components/StrategyLibrary";
 import SaveStrategyButton from "@/app/components/SaveStrategyButton";
 import {
   SAMPLE_STRATEGIES_EXTENDED,

@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import BrokerReview from "../../src/components/BrokerReview";
+import BrokerReview from "@/app/components/BrokerReview";
 import { getBrokerHub } from "../lib/services/brokerHub";
 
 const brokerHub = getBrokerHub();

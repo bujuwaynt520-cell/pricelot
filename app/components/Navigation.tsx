@@ -16,25 +16,34 @@ export default function Navigation({ onOpenSearch }: NavigationProps) {
   const pathname = usePathname();
 
   const menuItems = [
-    { id: "home", label: "Dashboard", path: "/", icon: Compass },
-    { id: "brokers", label: "Brokers", path: "/brokers", icon: ShieldCheck },
-    { id: "strategies", label: "Strategies", path: "/strategies", icon: Layers },
-    { id: "academy", label: "Academy", path: "/academy", icon: GraduationCap },
-    { id: "glossary", label: "Glossary", path: "/glossary", icon: BookOpen },
-    { id: "calendar", label: "Calendar", path: "/economic-calendar", icon: Calendar },
-    { id: "news", label: "News", path: "/news", icon: Newspaper },
-    { id: "sessions", label: "Sessions", path: "/market-sessions", icon: Clock },
-    { id: "strength", label: "Currency Strength", path: "/currency-strength", icon: BarChart2 },
-    { id: "heatmap", label: "Heat Map", path: "/forex-heatmap", icon: LayoutGrid },
-    { id: "gold", label: "Gold Hub", path: "/gold", icon: Gem },
-    { id: "crypto", label: "Crypto Hub", path: "/crypto", icon: Bitcoin },
-    { id: "indices", label: "Indices Hub", path: "/indices", icon: TrendingUp },
-    { id: "commodities", label: "Commodities Hub", path: "/commodities", icon: Gem },
-    { id: "forex", label: "Forex Hub", path: "/forex", icon: DollarSign },
-    { id: "compare", label: "Compare", path: "/compare", icon: BarChart2 },
-    { id: "tools", label: "Tools", path: "/tools", icon: HelpCircle },
-    { id: "account", label: "Account", path: "/account", icon: User },
-  ];
+  { id: "home", label: "Dashboard", path: "/", icon: Compass },
+  { id: "brokers", label: "Brokers", path: "/brokers", icon: ShieldCheck },
+  { id: "strategies", label: "Strategies", path: "/strategies", icon: Layers },
+  { id: "academy", label: "Academy", path: "/academy", icon: GraduationCap },
+  { id: "glossary", label: "Glossary", path: "/glossary", icon: BookOpen },
+
+  { id: "calendar", label: "Calendar", path: "/economic-calendar", icon: Calendar },
+  { id: "news", label: "News", path: "/news", icon: Newspaper },
+  { id: "sessions", label: "Sessions", path: "/market-sessions", icon: Clock },
+
+  { id: "strength", label: "Currency Strength", path: "/currency-strength", icon: BarChart2 },
+  { id: "heatmap", label: "Heat Map", path: "/forex-heatmap", icon: LayoutGrid },
+
+  { id: "gold", label: "Gold Hub", path: "/gold", icon: Gem },
+  { id: "crypto", label: "Crypto Hub", path: "/crypto", icon: Bitcoin },
+  { id: "indices", label: "Indices Hub", path: "/indices", icon: TrendingUp },
+  { id: "commodities", label: "Commodities Hub", path: "/commodities", icon: Gem },
+  { id: "forex", label: "Forex Hub", path: "/forex", icon: DollarSign },
+
+  { id: "compare", label: "Compare", path: "/compare", icon: BarChart2 },
+  { id: "tools", label: "Tools", path: "/tools", icon: HelpCircle },
+
+  { id: "authors", label: "Authors", path: "/authors", icon: User },
+  { id: "about", label: "About", path: "/about", icon: BookOpen },
+  { id: "contact", label: "Contact", path: "/contact", icon: User },
+
+  { id: "account", label: "Account", path: "/account", icon: User },
+];
 
   const handleNavClick = (tabId: string) => {
     trackEvent("navigation_clicked", "Navigation", tabId);

@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import Link from "next/link";
-import Academy from "../../../src/components/Academy";
+import Academy from "../../components/Academy";
 import { getRelatedInternalLinks } from "../../lib/services/internalLinks";
 import { RelatedContentSection } from "@/app/components/RelatedContent";
 import {

@@ -49,7 +49,12 @@ export default function HeatMapClient() {
         <div className="col-span-2 bg-white border border-zinc-200 rounded-3xl p-4 shadow-sm overflow-auto">
           <div className="text-xs text-zinc-500 mb-3 flex items-center justify-between">
             <div>Currency Matrix (rows = base, columns = quote)</div>
-            <div>Last updated: {matrixData.lastUpdated ? new Date(matrixData.lastUpdated).toLocaleString() : now.toLocaleString()}</div>
+            <div>
+              Last updated:{" "}
+              {matrixData.lastUpdated
+                ? new Date(matrixData.lastUpdated).toLocaleString()
+                : "--"}
+            </div>
           </div>
 
           <div className="overflow-auto">

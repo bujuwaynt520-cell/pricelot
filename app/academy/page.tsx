@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import Academy from "../../src/components/Academy";
+import Academy from "../components/Academy";
 
 export const metadata: Metadata = {
   title: "Interactive Academy Portal | Free Trading Masterclasses | PriceLot",
