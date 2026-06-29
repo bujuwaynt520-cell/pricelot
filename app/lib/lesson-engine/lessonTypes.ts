@@ -53,6 +53,27 @@ export interface LessonDownload {
   worksheet?: string;
 }
 
+export interface LessonMedia {
+
+  id: string;
+
+  type:
+    | "image"
+    | "video"
+    | "youtube"
+    | "pdf"
+    | "worksheet"
+    | "chart"
+    | "tradingview";
+
+  title: string;
+
+  url: string;
+
+  caption?: string;
+
+}
+
 export interface LessonContent {
   id: string;
 
@@ -68,6 +89,8 @@ export interface LessonContent {
 
   sections: LessonSection[];
 
+  media?: LessonMedia[];
+
   quiz: LessonQuizQuestion[];
 
   downloads?: LessonDownload;
@@ -75,6 +98,22 @@ export interface LessonContent {
   navigation?: LessonNavigation;
 
   relatedLessons?: string[];
+
+  faqs?: {
+
+  question: string;
+
+  answer: string;
+
+}[];
+
+takeaways?: string[];
+
+commonMistakes?: string[];
+
+prerequisites?: string[];
+
+estimatedCompletionTime?: number;
 
   glossaryTerms?: string[];
 }

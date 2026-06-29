@@ -10,6 +10,10 @@ import { GraduationCap, Clock, Award, CheckCircle2, AlertCircle, ArrowLeft, Arro
 import { SAMPLE_LESSONS_EXTENDED as SAMPLE_LESSONS } from "../lib/contentEngine";
 import { AcademyLesson } from "../types";
 import { useAnalytics } from "../hooks/useAnalytics";
+import AcademyDashboard from "./AcademyDashboard";
+import ContinueLearning from "./ContinueLearning";
+import CourseRoadmap from "./CourseRoadmap";
+import AcademySearch from "./AcademySearch";
 
 interface AcademyProps {
   selectedLessonId?: string | null;
@@ -87,9 +91,18 @@ export default function Academy({ selectedLessonId, onClearSelection }: AcademyP
   });
 
   return (
-    <section id="academy-section" className="space-y-8 animate-fade-in">
-      
+  <section id="academy-section" className="space-y-8 animate-fade-in">
+
+      <AcademyDashboard />
+
+      <ContinueLearning />
+
+      <CourseRoadmap />
+
+      <AcademySearch />
+
       {/* Dynamic reading mode */}
+
       {activeLesson ? (
         <div className="bg-white rounded-xl border border-zinc-200 p-6 md:p-8 space-y-6 max-w-4xl mx-auto text-left shadow-md">
           {/* Back Button */}
